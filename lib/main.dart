@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:moodingo/screens/chart.dart';
+import 'package:provider/provider.dart';
 // import 'package:flutter/services.dart';
 // import 'package:dost/dialog_flow.dart';
 import './screens/homepage.dart';
@@ -8,6 +10,10 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MyApp(),
+    routes: {
+      '/home_screen': (ctx) => HomePage(),
+      '/chart': (ctx) => MoodChart(),
+    },
   ));
 }
 

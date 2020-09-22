@@ -17,8 +17,6 @@ class _MoodPageState extends State<MoodPage> {
   MoodCard moodCard;
   String mood;
   String image;
-  // String datepicked;
-  // String timepicked;
   var datepick = new DateTime.now();
   var timepick = new DateTime.now();
   String datetime;
@@ -75,7 +73,7 @@ class _MoodPageState extends State<MoodPage> {
               SizedBox(width: 50),
               FlatButton.icon(
                   icon: Icon(Icons.date_range),
-                  label: Text(datepicked.toString()),
+                  label: Text(datepicked),
                   // label: Text(datepicked == 'null'
                   //     ? DateTime.now().day.toString() +
                   //         '/' +
@@ -99,7 +97,6 @@ class _MoodPageState extends State<MoodPage> {
                                   '/' +
                                   date.month.toString();
                             }),
-                            //if()
                           })),
               FlatButton.icon(
                   icon: Icon(Icons.timer),

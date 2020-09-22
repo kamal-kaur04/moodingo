@@ -18,7 +18,7 @@ class _MoodPageState extends State<MoodPage> {
   String mood;
   String image;
   var datepick = new DateTime.now();
-  var timepick = new DateTime.now();
+  //var timepick = new DateTime.now();
   String datetime;
   int currentindex;
   int ontapcount = 0;
@@ -51,16 +51,17 @@ class _MoodPageState extends State<MoodPage> {
   }
 
   String dateonly;
+  var timepick = new TimeOfDay.fromDateTime(DateTime.now());
   @override
   Widget build(BuildContext context) {
     String datepicked = DateFormat('d/M/y').format(datepick);
-    String timepicked = DateFormat.jm().format(timepick);
+    String timepicked = DateFormat.jm().format(DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+        timepick.hour,
+        timepick.minute));
     return Scaffold(
-        // appBar: AppBar(
-        //     title: Text('Moodingo',
-        //         style: TextStyle(
-        //             fontStyle: FontStyle.normal, color: Colors.black)),
-        //     backgroundColor: Colors.white),
         backgroundColor: Colors.white,
         body: Container(
           child: Column(children: <Widget>[
@@ -74,20 +75,14 @@ class _MoodPageState extends State<MoodPage> {
               FlatButton.icon(
                   icon: Icon(Icons.date_range),
                   label: Text(datepicked),
-                  // label: Text(datepicked == 'null'
-                  //     ? DateTime.now().day.toString() +
-                  //         '/' +
-                  //         DateTime.now().day.toString() +
-                  //         '/' +
-                  //         DateTime.now().day.toString()
-                  //     : datepicked),
                   onPressed: () => showDatePicker(
                           context: context,
-                          initialDate: DateTime.now(),
+                          initialDate: datepick,
                           firstDate: DateTime(2001),
                           lastDate: DateTime(2022))
                       .then((date) => {
                             setState(() {
+                              datepick = date;
                               datepicked = date.day.toString() +
                                   '/' +
                                   date.month.toString() +
@@ -101,14 +96,15 @@ class _MoodPageState extends State<MoodPage> {
               FlatButton.icon(
                   icon: Icon(Icons.timer),
                   label: Text(timepicked),
-                  onPressed: () => showTimePicker(
-                          context: context, initialTime: TimeOfDay.now())
-                      .then((time) => {
-                            setState(() {
-                              timepicked = time.format(context).toString();
-                              datetime = datepicked + '   ' + timepicked;
-                            })
-                          })),
+                  onPressed: () =>
+                      showTimePicker(context: context, initialTime: timepick)
+                          .then((time) => {
+                                setState(() {
+                                  timepick = time;
+                                  timepicked = time.format(context).toString();
+                                  datetime = datepicked + '   ' + timepicked;
+                                })
+                              })),
               // Container(
               //   height: 40,
               //   width: 40,

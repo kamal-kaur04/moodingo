@@ -10,10 +10,10 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     home: MyApp(),
-    routes: {
-      '/home_screen': (ctx) => HomePage(),
-      '/chart': (ctx) => MoodChart(),
-    },
+    // routes: {
+    //   '/home_screen': (ctx) => HomePage(),
+    //   '/chart': (ctx) => MoodChart(),
+    // },
   ));
 }
 

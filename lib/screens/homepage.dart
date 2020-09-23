@@ -109,9 +109,6 @@ class MyHomePage extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => SecondRoute()),
                   );
                 },
-                //{
-                //   print('tapped');
-                // },
                 child: Card(
                   semanticContainer: true,
                   clipBehavior: Clip.antiAliasWithSaveLayer,

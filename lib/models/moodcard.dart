@@ -3,7 +3,7 @@ import 'package:moodingo/helpers/db_helper.dart';
 import 'package:moodingo/helpers/mooddata.dart';
 import 'package:moodingo/models/activity.dart';
 
-class MoodCard extends ChangeNotifier {
+class MoodCard {
   String datetime;
   String mood;
   List<String> activityname = [];
@@ -11,7 +11,13 @@ class MoodCard extends ChangeNotifier {
   String image;
   String actimage;
   String actname;
-  MoodCard({this.actimage, this.actname, this.datetime, this.image, this.mood});
+
+  MoodCard(String datetime, String image, String mood) {
+    this.datetime = datetime;
+    this.image = image;
+    this.mood = mood;
+  }
+  //MoodCard({this.actimage, this.actname, this.datetime, this.image, this.mood});
   List items;
   List<MoodData> data = [];
   String date;
@@ -21,7 +27,7 @@ class MoodCard extends ChangeNotifier {
   void add(Activity act) {
     activityimage.add(act.image);
     activityname.add(act.name);
-    notifyListeners();
+    //notifyListeners();
   }
 
   Future<void> addPlace(String datetime, String mood, String image,
@@ -34,11 +40,11 @@ class MoodCard extends ChangeNotifier {
       'actname': actname,
       'date': date
     });
-    notifyListeners();
+    //notifyListeners();
   }
 
   Future<void> deletePlaces(String datetime) async {
     DBHelper.delete(datetime);
-    notifyListeners();
+    //notifyListeners();
   }
 }

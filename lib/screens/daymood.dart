@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moodingo/Bloc/moodBloc.dart';
+import 'package:moodingo/events/moodEvent.dart';
 import 'package:moodingo/models/activity.dart';
 
 import 'package:moodingo/models/mood.dart';
 import 'package:moodingo/models/moodcard.dart';
+import 'package:moodingo/screens/moodhome.dart';
 import 'package:moodingo/widgets/activity.dart';
 import 'package:moodingo/widgets/moodicon.dart';
 import 'package:provider/provider.dart';
@@ -204,20 +208,16 @@ class _MoodPageState extends State<MoodPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
                 onPressed: () => {
-                      setState(() {
-                        Provider.of<MoodCard>(context, listen: false).addPlace(
-                            datetime,
-                            mood,
-                            image,
-                            Provider.of<MoodCard>(context, listen: false)
-                                .activityimage
-                                .join('_'),
-                            Provider.of<MoodCard>(context, listen: false)
-                                .activityname
-                                .join('_'),
-                            dateonly);
-                      }),
-                      Navigator.of(context).pushNamed('/home_screen'),
+                      //setState(() {
+                      BlocProvider.of<MoodBloc>(context).add(
+                        MoodEvent.add(
+                          MoodCard(datepicked, mood, image),
+                        ),
+                      ),
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MoodHome()),
+                      ),
                     },
                 icon: Icon(Icons.send, color: Colors.white),
                 label: Text(

@@ -30,6 +30,11 @@ dependencies:
   pie_chart: ^3.1.1
   path: ^1.6.2
   path_provider: ^1.6.11
+  generic_bloc_provider: ^1.0.9
+  #firebase_core: ^0.4.0+9
+  firebase_auth: ^0.15.2
+  google_sign_in: ^4.0.4
+  cloud_firestore: ^0.12.9+5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -55,37 +60,7 @@ flutter:
 
  
   assets:
-    - assets/smile.png
-    - assets/sad.png
-    - assets/angry.png
-    - assets/scared.png
-    - assets/surprised.png
-    - assets/loving.png
-    - assets/sports.png
-    - assets/sleeping.png
-    - assets/shop.png
-    - assets/relax.png
-    - assets/reading.png
-    - assets/movies.png
-    - assets/gaming.png
-    - assets/friends.png
-    - assets/family.png
-    - assets/excercise.png
-    - assets/eat.png
-    - assets/date.png
-    - assets/clean.png
-    - assets/5251.jpg
-    - assets/5560.jpg
-    - assets/Moodingo-1.png
-    - assets/Symbols.png
-    - assets/Line 14.png
-    - assets/Group -13.png
-    - assets/splash.jpg
-    - assets/rsz_fab.png
-    - assets/rsz_happy.png
-    - assets/rsz_neutral.png
-    - assets/rsz_sad1.png
-    - assets/rsz_awful.png
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

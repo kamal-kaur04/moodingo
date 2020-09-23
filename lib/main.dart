@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:moodingo/screens/chart.dart';
-import 'package:provider/provider.dart';
-// import 'package:flutter/services.dart';
-// import 'package:dost/dialog_flow.dart';
-import './screens/homepage.dart';
+//import 'package:moodingo/screens/chart.dart';
+import 'package:moodingo/screens/loginpage.dart';
+//import 'package:provider/provider.dart';
+//import './screens/homepage.dart';
 import 'dart:async';
 
 void main() {
@@ -32,7 +31,7 @@ class _MyAppState extends State<MyApp> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => LoginPage(),
           ),
         );
       },

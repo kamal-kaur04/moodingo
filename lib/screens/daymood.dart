@@ -67,7 +67,10 @@ class _MoodPageState extends State<MoodPage> {
           child: Column(children: <Widget>[
             SizedBox(height: 150),
             Text('WHAT ARE YOU FEELING?',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.purple)),
             SizedBox(height: 10),
             Text('(Tap to Select and Tap again to deselect!)'),
             Row(children: <Widget>[
@@ -155,7 +158,10 @@ class _MoodPageState extends State<MoodPage> {
                   }),
             ),
             Text('WHAT YOU HAVE BEEN DOING?',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.purple)),
             SizedBox(height: 10),
             Text('Hold on the activity to select,You can choose multiple',
                 style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal)),
@@ -185,15 +191,18 @@ class _MoodPageState extends State<MoodPage> {
                                 else
                                   setState(() {
                                     act[index].selected = true;
-                                    Provider.of<MoodCard>(context,
-                                            listen: false)
-                                        .add(act[index]);
                                   }),
+                                Provider.of<MoodCard>(context, listen: false)
+                                    .add(act[index])
                               }),
                     ]);
                   }),
             ),
-            FlatButton.icon(
+            RaisedButton.icon(
+                color: Colors.purple,
+                elevation: 3,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40)),
                 onPressed: () => {
                       setState(() {
                         Provider.of<MoodCard>(context, listen: false).addPlace(
@@ -210,10 +219,10 @@ class _MoodPageState extends State<MoodPage> {
                       }),
                       Navigator.of(context).pushNamed('/home_screen'),
                     },
-                icon: Icon(Icons.send),
+                icon: Icon(Icons.send, color: Colors.white),
                 label: Text(
                   'SUBMIT',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white),
                 ))
           ]),
         ));

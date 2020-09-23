@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "943154115804",
+    "firebase_url": "https://moodingo-ba7cf.firebaseio.com",
+    "project_id": "moodingo-ba7cf",
+    "storage_bucket": "moodingo-ba7cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943154115804:android:b85527969e7aac8590f019",
+        "android_client_info": {
+          "package_name": "com.example.moodingo_master"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943154115804-8spovd4f33892q9q0v5j3he72r3ou5hg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moodingo_master",
+            "certificate_hash": "ed91d8548e1198e3c7257e6b06187df1b4a8750b"
+          }
+        },
+        {
+          "client_id": "943154115804-d9r4lpp4anhgo949sj4vufp6jdreq1kg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQI8jSt9aQne9l_uAnsaos88PNc2ka46g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943154115804-d9r4lpp4anhgo949sj4vufp6jdreq1kg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:moodingo/bloc/userBloc.dart';
+import 'package:moodingo/events/userEvent.dart';
 import 'package:moodingo/main.dart';
-//import 'package:moodingo/screens/chart.dart';
 import 'package:moodingo/screens/daymood.dart';
-//import 'package:moodingo/screens/loginpage.dart';
 import 'package:moodingo/services/sign_in.dart';
 
 class HomePage extends StatefulWidget {
@@ -75,7 +76,9 @@ class MyHomePage extends State<HomePage> {
               SizedBox(height: 20),
               RaisedButton(
                 onPressed: () {
-                  signOutGoogle();
+                  //signOutGoogle();
+                  UserBloc userBloc = BlocProvider.of<UserBloc>(context);
+                  userBloc.eventSink.add(SignOut());
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) {
                     return MyApp();

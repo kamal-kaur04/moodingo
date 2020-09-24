@@ -26,6 +26,11 @@ class MoodBloc extends Bloc<MoodEvent, List<MoodCard>> {
         yield newState;
         break;
 
+      case EventType.initial:
+        List<MoodCard> newState = List<MoodCard>();
+        yield newState;
+        break;
+
       default:
         throw Exception('Event not found $event');
     }

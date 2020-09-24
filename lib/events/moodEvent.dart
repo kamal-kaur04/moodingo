@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:moodingo/models/moodcard.dart';
 
-enum EventType { add, delete }
+enum EventType { add, delete, initial }
 
 class MoodEvent {
   MoodCard moodCard;
@@ -16,5 +15,10 @@ class MoodEvent {
   MoodEvent.delete(int index) {
     this.eventType = EventType.delete;
     this.moodIndex = index;
+  }
+
+  MoodEvent.initial() {
+    this.eventType = EventType.initial;
+    this.moodCard = moodCard;
   }
 }

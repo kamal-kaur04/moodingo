@@ -1,5 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moodingo/bloc/moodBloc.dart';
+import 'package:moodingo/events/moodEvent.dart';
+import 'package:moodingo/models/moodcard.dart';
 import 'package:moodingo/screens/homepage.dart';
 
 import 'package:moodingo/services/sign_in.dart';
@@ -36,6 +40,9 @@ class _LoginPageState extends State<LoginPage> {
       splashColor: Colors.grey,
       onPressed: () {
         signInWithGoogle().whenComplete(() {
+          BlocProvider.of<MoodBloc>(context).add(
+            MoodEvent.initial(),
+          );
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {

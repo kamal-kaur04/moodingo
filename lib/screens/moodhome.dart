@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moodingo/Bloc/moodBloc.dart';
+import 'package:moodingo/bloc/moodBloc.dart';
 import 'package:moodingo/events/moodEvent.dart';
 import 'package:moodingo/models/moodcard.dart';
 
 import 'package:moodingo/screens/loginpage.dart';
 import 'package:moodingo/services/sign_in.dart';
-import 'package:moodingo/widgets/moodicon.dart';
 
 class MoodHome extends StatelessWidget {
   @override
@@ -95,7 +94,7 @@ class MoodHome extends StatelessWidget {
           ),
         ),
         body: Container(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(5),
             child: BlocConsumer<MoodBloc, List<MoodCard>>(
               buildWhen: (List<MoodCard> previous, List<MoodCard> current) {
                 // if (current.length < current.length) {
@@ -113,7 +112,7 @@ class MoodHome extends StatelessWidget {
                 return ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
-                  padding: EdgeInsets.all(16),
+                  padding: EdgeInsets.all(10),
                   itemCount: moodList.length,
                   itemBuilder: (context, index) {
                     return Card(
@@ -121,9 +120,67 @@ class MoodHome extends StatelessWidget {
                         isThreeLine: true,
                         leading: Image.asset(moodList[index].mood),
                         title: Text(moodList[index].image),
-                        onTap: () => BlocProvider.of<MoodBloc>(context)
-                            .add(MoodEvent.delete(index)),
-                        subtitle: Text(moodList[index].datetime),
+                        //onTap: () => null,
+                        subtitle: Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 10,
+                              width: 350,
+                              child: Align(
+                                  alignment: Alignment.topRight,
+                                  // child: Padding(
+                                  //     padding: const EdgeInsets.all(1.0),
+                                  child: IconButton(
+                                    icon: Icon(Icons.delete),
+                                    onPressed: () {
+                                      BlocProvider.of<MoodBloc>(context)
+                                          .add(MoodEvent.delete(index));
+                                    },
+                                  )),
+                            ),
+                            //),
+                            Row(
+                              children: <Widget>[
+                                Text(moodList[index].datetime + ', '),
+                                Text(moodList[index].time),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Stack(
+                              children: <Widget>[
+                                SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                          children: moodList[index]
+                                              .activityimage
+                                              .map((item) => new Image.asset(
+                                                    item,
+                                                    height: 30,
+                                                    width: 60,
+                                                  ))
+                                              .toList()),
+                                      Padding(padding: EdgeInsets.all(3)),
+                                      Row(
+                                          children: moodList[index]
+                                              .activityname
+                                              .map((item) => new Text(
+                                                    '    ' + item + '     ',
+                                                    style:
+                                                        TextStyle(fontSize: 10),
+                                                  ))
+                                              .toList()),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Padding(padding: EdgeInsets.all(10)),
+                          ],
+                        ),
                       ),
                     );
                   },

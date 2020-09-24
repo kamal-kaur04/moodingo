@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:moodingo/helpers/db_helper.dart';
 import 'package:moodingo/helpers/mooddata.dart';
 import 'package:moodingo/models/activity.dart';
@@ -11,11 +10,16 @@ class MoodCard {
   String image;
   String actimage;
   String actname;
+  String time;
 
-  MoodCard(String datetime, String image, String mood) {
+  MoodCard(String datetime, String image, String time, String mood,
+      List<String> activityimage, List<String> activityname) {
     this.datetime = datetime;
     this.image = image;
+    this.time = time;
     this.mood = mood;
+    this.activityimage = activityimage;
+    this.activityname = activityname;
   }
   //MoodCard({this.actimage, this.actname, this.datetime, this.image, this.mood});
   List items;

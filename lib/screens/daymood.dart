@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moodingo/Bloc/moodBloc.dart';
+import 'package:moodingo/bloc/moodBloc.dart';
 import 'package:moodingo/events/moodEvent.dart';
 import 'package:moodingo/models/activity.dart';
 
@@ -49,6 +49,10 @@ class _MoodPageState extends State<MoodPage> {
     Activity('assets/date.png', 'Date', false),
     Activity('assets/clean.png', 'Cleaning', false)
   ];
+
+  List<String> activityName = [];
+  List<String> activityImage = [];
+
   Color colour = Colors.white;
   void initState() {
     super.initState();
@@ -194,10 +198,11 @@ class _MoodPageState extends State<MoodPage> {
                                   }
                                 else
                                   setState(() {
+                                    activityImage.add(act[index].image);
+                                    activityName.add(act[index].name);
                                     act[index].selected = true;
                                   }),
-                                Provider.of<MoodCard>(context, listen: false)
-                                    .add(act[index])
+                                //act[index].selected = false,
                               }),
                     ]);
                   }),
@@ -208,12 +213,14 @@ class _MoodPageState extends State<MoodPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
                 onPressed: () => {
-                      //setState(() {
                       BlocProvider.of<MoodBloc>(context).add(
                         MoodEvent.add(
-                          MoodCard(datepicked, mood, image),
+                          MoodCard(datepicked, mood, timepicked, image,
+                              activityImage, activityName),
                         ),
                       ),
+                      activityImage = [],
+                      activityName = [],
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => MoodHome()),

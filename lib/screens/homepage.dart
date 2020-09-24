@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:moodingo/screens/chart.dart';
+import 'package:moodingo/main.dart';
+//import 'package:moodingo/screens/chart.dart';
 import 'package:moodingo/screens/daymood.dart';
-import 'package:moodingo/screens/loginpage.dart';
+//import 'package:moodingo/screens/loginpage.dart';
 import 'package:moodingo/services/sign_in.dart';
-// import 'package:dost/dialog_flow.dart';
-// import 'package:dost/widget/messaging_widget.dart';
-// import 'package:dost/mini_games.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -80,7 +78,7 @@ class MyHomePage extends State<HomePage> {
                   signOutGoogle();
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (context) {
-                    return LoginPage();
+                    return MyApp();
                   }), ModalRoute.withName('/'));
                 },
                 color: Colors.purple,

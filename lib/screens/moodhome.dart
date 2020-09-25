@@ -119,26 +119,26 @@ class MoodHome extends StatelessWidget {
                       child: ListTile(
                         isThreeLine: true,
                         leading: Image.asset(moodList[index].mood),
-                        title: Text(moodList[index].image),
+                        title: Row(
+                          //mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            Text(moodList[index].image),
+                            SizedBox(width: 118),
+                            IconButton(
+                              alignment: Alignment.topRight,
+                              icon: Icon(Icons.delete),
+                              onPressed: () {
+                                print('button onpress');
+                                BlocProvider.of<MoodBloc>(context)
+                                    .add(MoodEvent.delete(index));
+                                print('Bloc call');
+                              },
+                            ),
+                          ],
+                        ),
                         //onTap: () => null,
                         subtitle: Column(
                           children: <Widget>[
-                            SizedBox(
-                              height: 10,
-                              width: 350,
-                              child: Align(
-                                  alignment: Alignment.topRight,
-                                  // child: Padding(
-                                  //     padding: const EdgeInsets.all(1.0),
-                                  child: IconButton(
-                                    icon: Icon(Icons.delete),
-                                    onPressed: () {
-                                      BlocProvider.of<MoodBloc>(context)
-                                          .add(MoodEvent.delete(index));
-                                    },
-                                  )),
-                            ),
-                            //),
                             Row(
                               children: <Widget>[
                                 Text(moodList[index].datetime + ', '),
@@ -155,6 +155,9 @@ class MoodHome extends StatelessWidget {
                                   child: Column(
                                     children: [
                                       Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
                                           children: moodList[index]
                                               .activityimage
                                               .map((item) => new Image.asset(
@@ -165,6 +168,7 @@ class MoodHome extends StatelessWidget {
                                               .toList()),
                                       Padding(padding: EdgeInsets.all(3)),
                                       Row(
+                                          mainAxisSize: MainAxisSize.max,
                                           children: moodList[index]
                                               .activityname
                                               .map((item) => new Text(

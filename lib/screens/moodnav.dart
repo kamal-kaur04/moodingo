@@ -36,8 +36,8 @@ class MyMoodDashboard extends State<MoodDashboard> {
       //body: getScreen(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.purple,
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         currentIndex: _selectedIndex,
         items: [
           BottomNavigationBarItem(
@@ -58,13 +58,13 @@ class MyMoodDashboard extends State<MoodDashboard> {
                 color: Colors.grey[300],
               ),
               title: Text('ADD NEW')),
-          //   BottomNavigationBarItem(
-          //       icon: Icon(
-          //         LineAwesomeIcons.user,
-          //         size: 30.0,
-          //         color: Colors.grey[300],
-          //       ),
-          //       title: Text('STATISTICS')),
+          BottomNavigationBarItem(
+              icon: Icon(
+                LineAwesomeIcons.user,
+                size: 30.0,
+                color: Colors.grey[300],
+              ),
+              title: Text('STATISTICS')),
         ],
         onTap: (index) {
           setState(() {

@@ -71,12 +71,12 @@ class _MoodDayState extends State<MoodDay> {
                 IconButton(
                     icon: Icon(Icons.delete),
                     onPressed: () async {
-                      Provider.of<MoodCard>(context, listen: false).isloading =
-                          true;
-                      await Provider.of<MoodCard>(context, listen: false)
-                          .deletePlaces(widget.datetime);
-                      Provider.of<MoodCard>(context, listen: false).isloading =
-                          false;
+                      // Provider.of<MoodCard>(context, listen: false).isloading =
+                      //     true;
+                      // await Provider.of<MoodCard>(context, listen: false)
+                      //     .deletePlaces(widget.datetime);
+                      // Provider.of<MoodCard>(context, listen: false).isloading =
+                      //     false;
                     })
               ],
             ),

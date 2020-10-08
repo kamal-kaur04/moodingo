@@ -215,8 +215,16 @@ class _MoodPageState extends State<MoodPage> {
                 onPressed: () => {
                       BlocProvider.of<MoodBloc>(context).add(
                         MoodEvent.add(
-                          MoodCard(datepicked, mood, timepicked, image,
-                              activityImage, activityName),
+                          MoodCard(
+                            activityimage: activityImage,
+                            activityname: activityName,
+                            datetime: datepicked,
+                            time: timepicked,
+                            image: mood,
+                            mood: image,
+                          ),
+                          //MoodCard(datepicked, mood, timepicked, image,
+                          //activityImage, activityName),
                         ),
                       ),
                       activityImage = [],
